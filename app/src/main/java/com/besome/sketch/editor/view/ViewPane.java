@@ -95,6 +95,10 @@ import mod.elfilibustero.sketch.lib.utils.InjectAttributeHandler;
 import mod.elfilibustero.sketch.lib.utils.PropertiesUtil;
 import mod.elfilibustero.sketch.lib.utils.ResourceUtil;
 import mod.hey.studios.util.ProjectFile;
+import mod.trindadedev.attributes.CardAttributes;
+import mod.trindadedev.attributes.CircleImageViewAttributes;
+import mod.trindadedev.attributes.TabAttributes;
+import mod.trindadedev.attributes.MaterialButtonAttributes;
 
 public class ViewPane extends RelativeLayout {
 
@@ -914,11 +918,11 @@ public class ViewPane extends RelativeLayout {
     }
 
     private void updateCardView(ItemCardView cardView, InjectAttributeHandler handler) {
-        String cardElevation = handler.getAttributeValueOf("cardElevation");
-        String cardCornerRadius = handler.getAttributeValueOf("cardCornerRadius");
-        String compatPadding = handler.getAttributeValueOf("cardUseCompatPadding");
-        String strokeColor = handler.getAttributeValueOf("strokeColor");
-        String strokeWidth = handler.getAttributeValueOf("strokeWidth");
+        String cardElevation = handler.getAttributeValueOf(CardAttributes.CARD_ELEVATION);
+        String cardCornerRadius = handler.getAttributeValueOf(CardAttributes.CARD_CORNER_RADIUS);
+        String compatPadding = handler.getAttributeValueOf(CardAttributes.CARD_USE_COMPAT_PADDING);
+        String strokeColor = handler.getAttributeValueOf(CardAttributes.STROKE_COLOR);
+        String strokeWidth = handler.getAttributeValueOf(CardAttributes.STROKE_WIDTH);
 
         cardView.setCardElevation(PropertiesUtil.resolveSize(cardElevation, 4));
         cardView.setRadius(PropertiesUtil.resolveSize(cardCornerRadius, 8));
@@ -926,12 +930,12 @@ public class ViewPane extends RelativeLayout {
         cardView.setStrokeWidth(PropertiesUtil.resolveSize(strokeWidth, 0));
         cardView.setStrokeColor(PropertiesUtil.isHexColor(strokeColor) ? PropertiesUtil.parseColor(strokeColor) : Color.WHITE);
     }
-
+    
     private void updateCircleImageView(ItemCircleImageView imageView, InjectAttributeHandler handler) {
-        String borderColor = handler.getAttributeValueOf("civ_border_color");
-        String backgroundColor = handler.getAttributeValueOf("civ_circle_background_color");
-        String borderWidth = handler.getAttributeValueOf("civ_border_width");
-        String borderOverlay = handler.getAttributeValueOf("civ_border_overlay");
+        String borderColor = handler.getAttributeValueOf(CircleImageViewAttributes.BORDER_COLOR);
+        String backgroundColor = handler.getAttributeValueOf(CircleImageViewAttributes.CIRCLE_BACKGROUND_COLOR);
+        String borderWidth = handler.getAttributeValueOf(CircleImageViewAttributes.BORDER_WIDTH);
+        String borderOverlay = handler.getAttributeValueOf(CircleImageViewAttributes.BORDER_OVERLAY);
 
         imageView.setBorderColor(PropertiesUtil.isHexColor(borderColor) ? PropertiesUtil.parseColor(borderColor) : 0xff008dcd);
         imageView.setCircleBackgroundColor(PropertiesUtil.isHexColor(backgroundColor) ? PropertiesUtil.parseColor(backgroundColor) : 0xff008dcd);
@@ -940,12 +944,12 @@ public class ViewPane extends RelativeLayout {
     }
 
     private void updateTabLayout(ItemTabLayout tabLayout, InjectAttributeHandler handler) {
-        String gravity = handler.getAttributeValueOf("tabGravity");
-        String mode = handler.getAttributeValueOf("tabMode");
-        String indicatorHeight = handler.getAttributeValueOf("tabIndicatorHeight");
-        String indicatorColor = handler.getAttributeValueOf("tabIndicatorColor");
-        String textColor = handler.getAttributeValueOf("tabTextColor");
-        String selectedTextColor = handler.getAttributeValueOf("tabSelectedTextColor");
+        String gravity = handler.getAttributeValueOf(TabAttributes.TAB_GRAVITY);
+        String mode = handler.getAttributeValueOf(TabAttributes.TAB_MODE);
+        String indicatorHeight = handler.getAttributeValueOf(TabAttributes.TAB_INDICATOR_HEIGHT);
+        String indicatorColor = handler.getAttributeValueOf(TabAttributes.TAB_INDICATOR_COLOR);
+        String textColor = handler.getAttributeValueOf(TabAttributes.TAB_TEXT_COLOR);
+        String selectedTextColor = handler.getAttributeValueOf(TabAttributes.TAB_SELECTED_TEXT_COLOR);
 
         tabLayout.setTabGravity(switch (gravity) {
             case "center" -> TabLayout.GRAVITY_CENTER;
@@ -966,8 +970,8 @@ public class ViewPane extends RelativeLayout {
     }
 
     private void updateMaterialButton(ItemMaterialButton materialButton, InjectAttributeHandler handler) {
-        String radius = handler.getAttributeValueOf("cornerRadius");
-        String stroke = handler.getAttributeValueOf("strokeWidth");
+        String radius = handler.getAttributeValueOf(MaterialButtonAttributes.CORNER_RADIUS);
+        String stroke = handler.getAttributeValueOf(MaterialButtonAttributes.STROKE_WIDTH);
         materialButton.setStrokeWidth(PropertiesUtil.resolveSize(stroke, 0));
         materialButton.setCornerRadius(PropertiesUtil.resolveSize(radius, 8));
     }
