@@ -357,6 +357,20 @@ public class ViewPane extends RelativeLayout {
         view.setTranslationY(wB.a(getContext(), viewBean.translationY));
         view.setScaleX(viewBean.scaleX);
         view.setScaleY(viewBean.scaleY);
+        switch (injectHandler.getAttributeValueOf("visibility")) {
+            case "gone":
+                view.setVisibility(View.GONE);
+                break;
+            case "visible":
+                view.setVisibility(View.VISIBLE);
+                break;
+            case "invisible": 
+                view.setVisibility(View.INVISIBLE);
+                break;
+            default:
+                view.setVisibility(View.VISIBLE);
+                break;
+        }
         String backgroundResource = viewBean.layout.backgroundResource;
         if (backgroundResource != null) {
             try {
