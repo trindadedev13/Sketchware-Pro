@@ -233,9 +233,9 @@ public class gt extends LinearLayout {
             }
 
             if (layoutPosition == position) {
-                viewHolder.container.setBackgroundColor(Color.WHITE);
+                viewHolder.container.setBackgroundColor(getResources().getColor(com.google.android.material.R.attr.colorSurfaceContainerLow));
             } else {
-                viewHolder.container.setBackgroundColor(getResources().getColor(R.color.lighter_grey));
+                viewHolder.container.setBackgroundColor(getResources().getColor(com.google.android.material.R.attr.colorSurface));
             }
 
         }
