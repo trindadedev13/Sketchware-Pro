@@ -157,11 +157,6 @@ public class gt extends LinearLayout {
         if (spinnerDialogLayout.getParent() != null) {
             ((ViewGroup) spinnerDialogLayout.getParent()).removeView(spinnerDialogLayout);
         }
-
-        var dialogWindow = dialog.getWindow();
-        var attributes = dialogWindow.getAttributes();
-        attributes.width = ViewGroup.LayoutParams.MATCH_PARENT;
-        dialogWindow.setAttributes(attributes);
         
         dialog.setContentView(spinnerDialogLayout);
 
