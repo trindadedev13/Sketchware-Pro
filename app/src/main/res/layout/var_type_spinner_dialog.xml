@@ -1,4 +1,4 @@
-<com.google.android.material.card.MaterialCardView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,49 +6,41 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="10dp"
     android:layout_marginVertical="20dp"
-    app:cardBackgroundColor="?colorSurfaceContainerHigh"
-    app:cardCornerRadius="28dp"
-    app:cardElevation="10dp"
-    app:strokeWidth="0dp">
+    android:background="@drawable/rounded_dialog"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:textColor="?colorPrimary"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="?colorOnSurface"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="300dp"
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
-            android:textColor="?colorPrimary"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/var_type_category"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:splitMotionEvents="false" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:background="?colorOnSurface"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:orientation="horizontal">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/var_type_category"
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:splitMotionEvents="false" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/var_type_list"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" 
-                android:splitMotionEvents="false" />
-        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/var_type_list"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" 
+            android:splitMotionEvents="false" />
     </LinearLayout>
-</com.google.android.material.card.MaterialCardView>
+</LinearLayout>
