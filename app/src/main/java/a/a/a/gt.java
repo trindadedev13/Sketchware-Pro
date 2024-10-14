@@ -17,7 +17,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.color.MaterialColors;
 import com.sketchware.remod.R;
 
@@ -128,7 +127,7 @@ public class gt extends LinearLayout {
     private void initialize(Activity activity) {
         wB.a(activity, this, R.layout.var_type_spinner);
         tvPreview = findViewById(R.id.tv_preview);
-        MaterialCardView spinnerDialogLayout = (MaterialCardView) wB.a(activity, R.layout.var_type_spinner_dialog);
+        LinearLayout spinnerDialogLayout = (LinearLayout) wB.a(activity, R.layout.var_type_spinner_dialog);
         RecyclerView varTypeCategory = spinnerDialogLayout.findViewById(R.id.var_type_category);
         RecyclerView varTypeList = spinnerDialogLayout.findViewById(R.id.var_type_list);
         ((TextView) spinnerDialogLayout.findViewById(R.id.tv_title)).setText(xB.b().a(activity, R.string.logic_editor_more_block_title_add_variable_type));
