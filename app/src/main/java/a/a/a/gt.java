@@ -128,7 +128,7 @@ public class gt extends LinearLayout {
     private void initialize(Activity activity) {
         wB.a(activity, this, R.layout.var_type_spinner);
         tvPreview = findViewById(R.id.tv_preview);
-        MaterialCardView spinnerDialogLayout = (LinearLayout) wB.a(activity, R.layout.var_type_spinner_dialog);
+        MaterialCardView spinnerDialogLayout = (MaterialCardView) wB.a(activity, R.layout.var_type_spinner_dialog);
         RecyclerView varTypeCategory = spinnerDialogLayout.findViewById(R.id.var_type_category);
         RecyclerView varTypeList = spinnerDialogLayout.findViewById(R.id.var_type_list);
         ((TextView) spinnerDialogLayout.findViewById(R.id.tv_title)).setText(xB.b().a(activity, R.string.logic_editor_more_block_title_add_variable_type));
@@ -235,9 +235,9 @@ public class gt extends LinearLayout {
             }
 
             if (layoutPosition == position) {
-                viewHolder.container.setBackgroundColor(MaterialColors.getColor(this, com.google.android.material.R.attr.colorSurfaceContainerLow));
+                viewHolder.container.setBackgroundColor(MaterialColors.getColor(gt.this, com.google.android.material.R.attr.colorSurfaceContainerLow));
             } else {
-                viewHolder.container.setBackgroundColor(MaterialColors.getColor(this, com.google.android.material.R.attr.colorSurface));
+                viewHolder.container.setBackgroundColor(MaterialColors.getColor(gt.this, com.google.android.material.R.attr.colorSurface));
             }
 
         }
