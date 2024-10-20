@@ -52,4 +52,5 @@
     <dimen name="collapsing_toolbar_large_size">132dp</dimen>
     <dimen name="logcat_bottom_sheet_peek_height">90dp</dimen>
     <dimen name="recycler_view_item_spacing">6dp</dimen>
+    <dimen name="elevated_item_without_shadow_elevation">3dp</dimen>
 </resources>
