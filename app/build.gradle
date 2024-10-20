@@ -41,6 +41,10 @@ android {
         buildConfigField("String", "SKETCHUB_API_KEY", "\"${System.getenv("SKETCHUB_API_KEY")}\"")
     }
 
+    lintOptions {
+        lintConfig file("lint.xml")
+    }
+
     flavorDimensions = ["api"]
     productFlavors {
         minApi26 {
