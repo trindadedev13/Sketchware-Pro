@@ -107,6 +107,7 @@ import mod.elfilibustero.sketch.lib.utils.PropertiesUtil;
 import mod.elfilibustero.sketch.lib.utils.ResourceUtil;
 import mod.hey.studios.util.ProjectFile;
 import pro.sketchware.utility.SvgUtils;
+import pro.sketchware.tools.DynamicViewCreator;
 
 public class ViewPane extends RelativeLayout {
 
@@ -288,7 +289,7 @@ public class ViewPane extends RelativeLayout {
             case ViewBeans.VIEW_TYPE_WIDGET_OTPVIEW -> new ItemOTPView(context);
             case ViewBeans.VIEW_TYPE_WIDGET_CODEVIEW -> new ItemCodeView(context);
             case ViewBeans.VIEW_TYPE_WIDGET_RECYCLERVIEW -> new ItemRecyclerView(context);
-            default -> getUnknownItemView(viewBean);
+            default -> createViewDynamically(viewBean);
         };
         assert item != null;
         item.setId(++b);
@@ -297,10 +298,18 @@ public class ViewPane extends RelativeLayout {
         updateItemView(item, viewBean);
         return item;
     }
+
+    private View createViewDynamically(ViewBean bean) {
+        try {
+            return DynamicViewCreator.create(bean.convert, context);
+        } catch(Exception e) {
+            return getUnknownItemView(bean);
+        }
+    }
     
     private View getUnknownItemView(ViewBean bean) {
-        ItemTextView view = new ItemTextView(context);
-        view.setText("Unknown type:" + bean.convert);
+        var view = new ItemTextView(context);
+        view.setText("Unknown view with type:" + bean.type + "\n & with Unknown convert:" + bean.convert);
         view.setTextColor(Color.RED);
         return view;
     }
