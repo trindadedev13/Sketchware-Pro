@@ -6,9 +6,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.graphics.Typeface;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.besome.sketch.lib.base.BaseAppCompatActivity;
+
+import com.google.android.material.color.MaterialColors;
 
 import io.github.rosemoe.sora.langs.java.JavaLanguage;
 import io.github.rosemoe.sora.widget.schemes.EditorColorScheme;
@@ -34,7 +37,7 @@ public class CodeViewerActivity extends BaseAppCompatActivity {
         setContentView(binding.getRoot());
         var code = getIntent().getStringExtra("code");
         var scheme = getIntent().getStringExtra("scheme");
-        var scId = getIntent().getStringExtra("scId");
+        var scId = getIntent().getStringExtra("sc_id");
         binding.toolbar.setNavigationOnClickListener(Helper.getBackPressedClickListener(this));
         binding.toolbar.setSubtitle(scId);
         binding.editor.setTypefaceText(Typeface.MONOSPACE);
@@ -51,6 +54,7 @@ public class CodeViewerActivity extends BaseAppCompatActivity {
         } else {
             loadJavaScheme();
         }
+        binding.editor.setColorScheme(getMaterialStyledScheme());
     }
 
     private void loadJavaScheme() {
@@ -77,5 +81,21 @@ public class CodeViewerActivity extends BaseAppCompatActivity {
         } else {
             binding.editor.setColorScheme(CodeEditorColorSchemes.loadTextMateColorScheme(CodeEditorColorSchemes.THEME_GITHUB));
         }
+    }
+
+    @NonNull
+    private EditorColorScheme getMaterialStyledScheme() {
+        var scheme = binding.editor.getColorScheme();
+        var primary = MaterialColors.getColor(binding.editor, com.google.android.material.R.attr.colorPrimary);
+        var surface = MaterialColors.getColor(binding.editor, com.google.android.material.R.attr.colorSurface);
+        var onSurface = MaterialColors.getColor(binding.editor, com.google.android.material.R.attr.colorOnSurface);
+        scheme.setColor(EditorColorScheme.KEYWORD, primary);
+        scheme.setColor(EditorColorScheme.FUNCTION_NAME, primary);
+        scheme.setColor(EditorColorScheme.WHOLE_BACKGROUND, surface);
+        scheme.setColor(EditorColorScheme.CURRENT_LINE, surface);
+        scheme.setColor(EditorColorScheme.LINE_NUMBER_PANEL, surface);
+        scheme.setColor(EditorColorScheme.LINE_NUMBER_BACKGROUND, surface);
+        scheme.setColor(EditorColorScheme.TEXT_NORMAL, onSurface);
+        return scheme;
     }
 }
