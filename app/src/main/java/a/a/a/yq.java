@@ -771,7 +771,7 @@ public class yq {
             FileUtil.copyFile(path, FileUtil.getExternalStorageDir().concat("/.sketchware/temp/commands"));
         }
         
-        var viewBindingBuilder = new ViewBindingBuilder(List.of(), new File("."), packageName);
+        var viewBindingBuilder = new ViewBindingBuilder(null, null, packageName);
 
         // Generate layouts unless a custom version of it exists already
         // at /Internal storage/.sketchware/data/<sc_id>/files/resource/layout/

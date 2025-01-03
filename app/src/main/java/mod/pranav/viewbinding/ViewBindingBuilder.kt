@@ -5,12 +5,16 @@ import java.io.File
 import javax.xml.parsers.DocumentBuilderFactory
 
 class ViewBindingBuilder(
-    private val inputFiles: List<File>,
-    private val outputDir: File,
+    private val inputFiles: List<File>? = null,
+    private val outputDir: File? = null,
     private val packageName: String = "dev.pranav.viewbinding"
 ) {
     fun generateBindings() {
-        inputFiles.forEach { generateBindingForLayoutAndWrite(it) }
+        inputFiles?.let {
+            it.forEach {
+              generateBindingForLayoutAndWrite(it)
+            }
+        }
     }
     
     /** generate binding and return class code */
@@ -90,9 +94,12 @@ ${
     /** generate view binding and save in output file */
     private fun generateBindingForLayoutAndWrite(layoutFile: File) {
         val name = generateFileNameForLayout(layoutFile.nameWithoutExtension)
-        val file = File(outputDir, "$name.java")
         val content = generateBindingForLayout(layoutFile)
-        file.writeText(content)
+        outputDir?.let {
+            val file = File(it, "$name.java")
+            file.writeText(content)
+        }
+        
     }
 
     private fun generateImports(views: List<View>, rootView: View): String {
