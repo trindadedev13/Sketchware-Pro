@@ -35,6 +35,7 @@ import a.a.a.XB;
 import a.a.a.Zx;
 import a.a.a.aB;
 import a.a.a.xB;
+import com.besome.sketch.lib.base.BaseAppCompatActivity;
 import mod.hey.studios.code.SrcCodeEditor;
 import mod.hilal.saif.activities.tools.ConfigActivity;
 import pro.sketchware.R;
@@ -47,7 +48,7 @@ import pro.sketchware.utility.FileUtil;
 import pro.sketchware.utility.SketchwareUtil;
 import pro.sketchware.utility.XmlUtil;
 
-public class ColorEditorActivity extends AppCompatActivity {
+public class ColorEditorActivity extends BaseAppCompatActivity {
 
     private static final int MENU_SAVE = 0;
     private static final int MENU_OPEN_IN_EDITOR = 1;

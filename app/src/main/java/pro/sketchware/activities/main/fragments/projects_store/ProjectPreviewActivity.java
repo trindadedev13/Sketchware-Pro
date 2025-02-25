@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat;
 import androidx.transition.ChangeBounds;
 import androidx.transition.TransitionManager;
 
+import com.besome.sketch.lib.base.BaseAppCompatActivity;
 import com.google.android.material.transition.platform.MaterialContainerTransform;
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback;
 import com.google.gson.Gson;
@@ -22,7 +23,7 @@ import pro.sketchware.activities.main.fragments.projects_store.api.ProjectModel;
 import pro.sketchware.databinding.FragmentStoreProjectPreviewBinding;
 import pro.sketchware.utility.UI;
 
-public class ProjectPreviewActivity extends AppCompatActivity {
+public class ProjectPreviewActivity extends BaseAppCompatActivity {
     private FragmentStoreProjectPreviewBinding binding;
     private ProjectModel.Project project;
 
