@@ -828,6 +828,18 @@ public class yq {
                     Lx.e(packageName)));
         }
 
+        var customApplicationClassName = new ProjectSettings(sc_id).getValue(ProjectSettings.SETTING_APPLICATION_CLASS, ".SketchApplication");
+        var notUsingCustomApplicationClass = customApplicationClassName.equals(".SketchApplication");
+        if (!javaFiles.contains(new File(javaDir, + "SketchApplication.java") && notUsingCustomApplicationClass) {
+          var content = FileUtil.readFile(javaFilesPath
+                + File.separator
+                + packageNameAsFolders
+                + File.separator
+                + "SketchApplication.java");
+          srcCodeBeans.add(new SrcCodeBean("SketchApplication.java",
+                    content));
+        }
+
         if (!javaFiles.contains(new File(javaDir + "RequestNetwork.java")) && N.isHttp3Used) {
             srcCodeBeans.add(new SrcCodeBean("RequestNetwork.java",
                     Lx.j(Lx.h(packageName), false)));
